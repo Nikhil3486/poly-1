@@ -1,14 +1,14 @@
 //import c from "contracts/examples/erc721-transfer/FxERC721RootTunnel.sol"// Import necessary packages and contracts
 const { ethers } = require("hardhat");
 const { FXRootContractAbi } = require("../artifacts/FXRootContractAbi.js");
-const ABI = require("../artifacts/contracts/Gurdwara.sol/Gurdwara.json");
+const ABI = require("../artifacts/contracts/millioner.sol/millioner.json");
 require("dotenv").config();
 
 //Transfer ERC721A tokens to the Ethereum FxChain network
 async function main() {
   // Set up connections to network and wallet
   const networkAddress =
-    "https://rpc.sepolia.org";
+    "https://ethereum-sepolia-rpc.publicnode.com";
   const privateKey = process.env.PRIVATE_KEY;
   const provider = new ethers.providers.JsonRpcProvider(networkAddress);
 
@@ -19,8 +19,8 @@ async function main() {
   const [signer] = await ethers.getSigners();
 
   // Get ERC721A contract instance
-  const NFT = await ethers.getContractFactory("Gurdwara");
-  const nft = await NFT.attach("0x78EDe6348F07E5499340b709d4e325963Dc651d5");
+  const NFT = await ethers.getContractFactory("millioner");
+  const nft = await NFT.attach("0x0d7805DDDc91e61274815E9A7327f1C6c7fD9480");
 
   // Get FXRoot contract instance
   const fxRootAddress = "0xF9bc4a80464E48369303196645e876c8C7D972de";
